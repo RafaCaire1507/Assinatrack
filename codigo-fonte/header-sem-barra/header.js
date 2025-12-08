@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
     <header class="navbar">
       <div class="logo">
         <a href="https://rafacaire1507.github.io/Assinatrack/codigo-fonte/Home-Gabriel/home.html">
-          <img src="/imagens/logoassinatrack.png" alt="Assinatrack Logo">
+          <img src="https://rafacaire1507.github.io/Assinatrack/imagens/logoassinatrack.png" alt="Assinatrack Logo">
         </a>
       </div>
 

@@ -19,26 +19,31 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   const menu = `
-    <li><a href="/codigo-fonte/Tela-SobreNos/SobreNos.html">Sobre nós</a></li>
-    <li><a href="/codigo-fonte/Home-Gabriel/home.html#como-funciona">Como funciona</a></li>
-    <li><a data-protegido="true" href="/codigo-fonte/MinhasAssinaturas/minhas-assinaturas.html">Minhas assinaturas</a></li>
-    <li><a data-protegido="true" href="/codigo-fonte/Tela-Notificacoes/notificacoes.html">Minhas notificações</a></li>
-    <li><a href="/codigo-fonte/PesquisaAssinaturas-Gabriel/index.html">Pesquisa assinaturas</a></li>
-    <li><a href="/codigo-fonte/Home-Gabriel/home.html#contato">Contato</a></li>
+    <li><a href="https://rafacaire1507.github.io/Assinatrack/codigo-fonte/Tela-SobreNos/SobreNos.html
+">Sobre nós</a></li>
+    <li><a href="https://rafacaire1507.github.io/Assinatrack/codigo-fonte/Home-Gabriel/home.html
+#como-funciona">Como funciona</a></li>
+    <li><a data-protegido="true" href="https://rafacaire1507.github.io/Assinatrack/codigo-fonte/MinhasAssinaturas/minhas-assinaturas.html
+">Minhas assinaturas</a></li>
+    <li><a data-protegido="true" href="https://rafacaire1507.github.io/Assinatrack/codigo-fonte/Tela-Notificacoes/notificacoes.html
+">Minhas notificações</a></li>
+    <li><a href="https://rafacaire1507.github.io/Assinatrack/codigo-fonte/PesquisaAssinaturas-Gabriel/index.html">Pesquisa assinaturas</a></li>
+    <li><a href="https://rafacaire1507.github.io/Assinatrack/codigo-fonte/Home-Gabriel/home.html
+#contato">Contato</a></li>
   `;
 
   const botoesDireita = userLogado
     ? `
-      <a href="/codigo-fonte/Meu-perfil-Douglas/perfil.html" class="perfil-btn">Meu Perfil</a>
+      <a href="https://rafacaire1507.github.io/Assinatrack/codigo-fonte/Meu-perfil-Douglas/perfil.html" class="perfil-btn">Meu Perfil</a>
       ${avatarHTML}
     `
-    : `<a href="/codigo-fonte/Login-Douglas/Login.html" class="perfil-btn">Entrar</a>`;
+    : `<a href="https://rafacaire1507.github.io/Assinatrack/codigo-fonte/Login-Douglas/Login.html" class="perfil-btn">Entrar</a>`;
 
   headerContainer.innerHTML = `
     <header class="navbar">
       <div class="logo">
-        <a href="/codigo-fonte/Home-Gabriel/home.html">
-          <img src="/imagens/logoassinatrack.png" alt="Assinatrack Logo">
+        <a href="https://rafacaire1507.github.io/Assinatrack/codigo-fonte/Home-Gabriel/home.html">
+          <img src="https://rafacaire1507.github.io/Assinatrack/imagens/logoassinatrack.png" alt="Assinatrack Logo">
         </a>
       </div>
 
@@ -51,7 +56,8 @@ document.addEventListener("DOMContentLoaded", function () {
       </div>
     </header>
 
-    <div class="gradient-bar"></div>
+        <div class="gradient-bar"></div>
+
 
     <!-- MODAL LOGIN -->
     <div id="modalLogin" class="modal-overlay" style="display:none;">
@@ -62,8 +68,8 @@ document.addEventListener("DOMContentLoaded", function () {
         <p>Para acessar esta área, faça login ou crie uma conta gratuita.</p>
 
         <div class="modal-buttons">
-          <a href="/codigo-fonte/Login-Douglas/Login.html" class="modal-btn primary">Fazer Login</a>
-          <a href="/codigo-fonte/CriarConta-Hugo/index.html" class="modal-btn primary">Criar Conta</a>
+          <a href="https://rafacaire1507.github.io/Assinatrack/codigo-fonte/Login-Douglas/Login.html" class="modal-btn primary">Fazer Login</a>
+          <a href="https://rafacaire1507.github.io/Assinatrack/codigo-fonte/CriarConta-Hugo/index.html" class="modal-btn primary">Criar Conta</a>
         </div>
       </div>
     </div>
