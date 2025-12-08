@@ -7,7 +7,6 @@ if (!userLogado) {
 
 const userID = userLogado.id;
 
-
 const fotoPerfil = document.getElementById("fotoPerfil");
 const miniAvatar = document.getElementById("miniAvatar");
 const miniPlaceholder = document.querySelector(".mini-avatar-placeholder");
@@ -18,9 +17,7 @@ const salvarBtn = document.getElementById("salvarBtn");
 const deletarContaBtn = document.getElementById("deletarContaBtn");
 const nomeDisplay = document.getElementById("nomeDisplay");
 
-
 avatarWrapper.addEventListener("click", () => fotoInput.click());
-
 
 fotoInput.addEventListener("change", (e) => {
   const file = e.target.files[0];
@@ -30,19 +27,16 @@ fotoInput.addEventListener("change", (e) => {
   reader.onload = () => {
     const imageData = reader.result;
 
-    
     fotoPerfil.src = imageData;
     fotoPerfil.style.display = "block";
     avatarPlaceholder.style.display = "none";
 
-    
     if (miniAvatar) {
       miniAvatar.src = imageData;
       miniAvatar.style.display = "block";
       miniPlaceholder.style.display = "none";
     }
 
-    
     localStorage.setItem(`usuario_${userID}_fotoPerfil`, imageData);
 
     atualizarConclusaoPerfil();
@@ -50,7 +44,6 @@ fotoInput.addEventListener("change", (e) => {
 
   reader.readAsDataURL(file);
 });
-
 
 function removerFotoPerfil() {
   localStorage.removeItem(`usuario_${userID}_fotoPerfil`);
@@ -67,7 +60,6 @@ function removerFotoPerfil() {
   atualizarConclusaoPerfil();
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
   const btnRemover = document.createElement("button");
   btnRemover.textContent = "Remover foto";
@@ -79,7 +71,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   carregarPerfil();
 });
-
 
 function carregarPerfil() {
   const savedFoto = localStorage.getItem(`usuario_${userID}_fotoPerfil`);
@@ -95,7 +86,6 @@ function carregarPerfil() {
     }
   }
 
-  
   ["nome", "email", "telefone", "endereco"].forEach((id) => {
     const saved = localStorage.getItem(`usuario_${userID}_${id}`);
     if (saved) {
@@ -106,7 +96,6 @@ function carregarPerfil() {
 
   atualizarConclusaoPerfil();
 }
-
 
 salvarBtn.addEventListener("click", () => {
   let lista = JSON.parse(localStorage.getItem("listaUsuarios")) || [];
@@ -126,7 +115,6 @@ salvarBtn.addEventListener("click", () => {
   alert("Alterações salvas com sucesso!");
 });
 
-
 deletarContaBtn.addEventListener("click", () => {
   if (!confirm("Tem certeza que deseja deletar sua conta?")) return;
 
@@ -142,9 +130,9 @@ deletarContaBtn.addEventListener("click", () => {
   localStorage.removeItem("token");
 
   alert("Conta removida com sucesso!");
-  window.location.href = "/codigo-fonte/Login-Douglas/Login.html";
+  window.location.href =
+    "https://rafacaire1507.github.io/Assinatrack/codigo-fonte/Home-Gabriel/home.html";
 });
-
 
 document.getElementById("sairContaBtn").addEventListener("click", () => {
   if (!confirm("Deseja realmente sair da conta?")) return;
@@ -153,9 +141,9 @@ document.getElementById("sairContaBtn").addEventListener("click", () => {
   localStorage.removeItem("token");
 
   alert("Você saiu da sua conta.");
-  window.location.href = "/codigo-fonte/Home-Gabriel/home.html";
+  window.location.href =
+    "https://rafacaire1507.github.io/Assinatrack/codigo-fonte/Home-Gabriel/home.html";
 });
-
 
 function atualizarConclusaoPerfil() {
   const campos = {
@@ -182,7 +170,8 @@ function atualizarConclusaoPerfil() {
   texto.textContent = `Seu perfil está ${porcentagem}% completo`;
 }
 
-
 ["nome", "email", "telefone", "endereco"].forEach((id) => {
-  document.getElementById(id).addEventListener("input", atualizarConclusaoPerfil);
+  document
+    .getElementById(id)
+    .addEventListener("input", atualizarConclusaoPerfil);
 });
