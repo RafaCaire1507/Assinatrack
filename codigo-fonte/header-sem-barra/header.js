@@ -1,44 +1,59 @@
-// Substitua o conteúdo do seu header.js por ESTE
+// header.js (versão robusta para project pages / raiz / codigo-fonte)
 document.addEventListener("DOMContentLoaded", function () {
   const headerContainer = document.getElementById("header");
   const userLogado = JSON.parse(localStorage.getItem("userLogado"));
 
-  // --- Detecta base do repo (project page) ---
-  // Se a URL for /Assinatrack/..., pathParts[0] = 'Assinatrack' -> repoBase = '/Assinatrack'
-  // Se a URL for /codigo-fonte/... (p.ex. local ou user page raiz), repoBase = ''
-  const pathParts = window.location.pathname.split("/").filter(Boolean);
+  // --- detecta repoBase de forma mais robusta ---
+  // se pathname contiver "/codigo-fonte/", repoBase = parte antes de "/codigo-fonte"
+  // ex: "/Assinatrack/codigo-fonte/Home-Gabriel/home.html" -> repoBase = "/Assinatrack"
+  // se pathname começar por "/codigo-fonte", repoBase = ""
+  const pathname = window.location.pathname || "/";
   let repoBase = "";
-  if (pathParts.length > 0 && pathParts[0] !== "codigo-fonte") {
-    // possivelmente /REPO/...
-    repoBase = "/" + pathParts[0];
-  } else {
+  const codigoIndex = pathname.indexOf("/codigo-fonte/");
+  if (codigoIndex > 0) {
+    repoBase = pathname.substring(0, codigoIndex); // inclui leading slash
+  } else if (
+    pathname.startsWith("/codigo-fonte/") ||
+    pathname === "/codigo-fonte"
+  ) {
     repoBase = "";
+  } else {
+    // fallback: se a primeira parte não for "codigo-fonte", pode ser projeto em root (/Assinatrack/...)
+    const parts = pathname.split("/").filter(Boolean);
+    if (parts.length && parts[0] !== "codigo-fonte") {
+      repoBase = "/" + parts[0];
+    } else {
+      repoBase = "";
+    }
   }
+
+  // normaliza (remove trailing slash)
+  if (repoBase.endsWith("/")) repoBase = repoBase.slice(0, -1);
 
   const IMAGES = `${repoBase}/imagens`;
   const CODIGO = `${repoBase}/codigo-fonte`;
 
-  // --- avatar (mantive sua lógica) ---
+  // --- avatar ---
   let avatarHTML = "";
   if (userLogado) {
     const fotoSalva = localStorage.getItem(
       `usuario_${userLogado.id}_fotoPerfil`
     );
+    const avatarSrc =
+      fotoSalva && fotoSalva !== "null"
+        ? fotoSalva
+        : `${IMAGES}/user-avatar.png`;
     avatarHTML = `
       <img 
         id="miniAvatar"
-        src="${
-          fotoSalva && fotoSalva !== "null"
-            ? fotoSalva
-            : `${IMAGES}/user-avatar.png`
-        }"
+        src="${avatarSrc}"
         class="avatar"
         alt="Foto do usuário"
       >
     `;
   }
 
-  // --- menu de links usando CODIGO como base ---
+  // --- menu com links construídos a partir de CODIGO (garante que apontam para /REPO/codigo-fonte/...) ---
   const menu = `
     <li><a href="${CODIGO}/Tela-SobreNos/SobreNos.html">Sobre nós</a></li>
     <li><a href="${CODIGO}/Home-Gabriel/home.html#como-funciona">Como funciona</a></li>
@@ -88,61 +103,50 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>
   `;
 
-  // --- modal logic ---
+  // --- modal behavior ---
   const modal = document.getElementById("modalLogin");
   const modalBox = document.querySelector(".modal-box");
   const closeX = document.getElementById("closeModalX");
 
   function abrirModal() {
-    modal.style.display = "flex";
+    if (modal) modal.style.display = "flex";
   }
 
-  if (closeX) {
+  if (closeX)
     closeX.addEventListener("click", () => {
       modal.style.display = "none";
     });
-  }
-
-  if (modalBox) {
-    modalBox.addEventListener("click", (e) => e.stopPropagation());
-  }
-
-  if (modal) {
+  if (modalBox) modalBox.addEventListener("click", (e) => e.stopPropagation());
+  if (modal)
     modal.addEventListener("click", (e) => {
-      if (!modalBox.contains(e.target)) {
-        modal.style.display = "none";
-      }
+      if (!modalBox.contains(e.target)) modal.style.display = "none";
     });
-  }
 
-  // --- proteção de links (rota protegida) ---
+  // --- proteção de rotas ---
   document.querySelectorAll("a[data-protegido='true']").forEach((link) => {
     link.addEventListener("click", function (e) {
-      const currentUser = JSON.parse(localStorage.getItem("userLogado"));
-      if (!currentUser) {
+      if (!userLogado) {
         e.preventDefault();
         abrirModal();
       }
     });
   });
 
-  // --- smooth scroll para hashes (mantive sua lógica) ---
+  // --- smooth scroll for same-page hashes ---
   document.querySelectorAll('a[href*="#"]').forEach((link) => {
     link.addEventListener("click", function (e) {
-      // cria URL baseada em this.href (funciona com absolute ou relative)
-      const url = new URL(this.href, window.location.href);
-      const hash = url.hash;
-
-      if (hash && document.querySelector(hash)) {
-        const destino = document.querySelector(hash);
-
-        if (url.pathname === window.location.pathname) {
-          e.preventDefault();
-          destino.scrollIntoView({
-            behavior: "smooth",
-            block: "start",
-          });
+      try {
+        const url = new URL(this.href, window.location.href);
+        const hash = url.hash;
+        if (hash && document.querySelector(hash)) {
+          const destino = document.querySelector(hash);
+          if (url.pathname === window.location.pathname) {
+            e.preventDefault();
+            destino.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
         }
+      } catch (err) {
+        // se this.href não for um URL completo, fallback: deixa o link agir normalmente
       }
     });
   });
