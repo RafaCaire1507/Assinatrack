@@ -20,7 +20,6 @@ function entrar() {
 
   const listaUsuarios = JSON.parse(localStorage.getItem("listaUsuarios")) || [];
 
-  
   const user = listaUsuarios.find(
     (u) => u.email === email && u.senha === senha
   );
@@ -35,7 +34,6 @@ function entrar() {
 
   msgError.style.display = "none";
 
-  
   const token =
     Math.random().toString(16).substring(2) +
     Math.random().toString(16).substring(2);
@@ -43,8 +41,6 @@ function entrar() {
   localStorage.setItem("token", token);
   localStorage.setItem("userLogado", JSON.stringify(user));
 
-  
   window.location.href =
-    "/codigo-fonte/Meu-perfil-Douglas/perfil.html"
-
+    "https://rafacaire1507.github.io/Assinatrack/codigo-fonte/Meu-perfil-Douglas/perfil.html";
 }
