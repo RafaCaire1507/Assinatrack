@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
 ">Minhas assinaturas</a></li>
     <li><a data-protegido="true" href="https://rafacaire1507.github.io/Assinatrack/codigo-fonte/Tela-Notificacoes/notificacoes.html
 ">Minhas notificações</a></li>
-    <li><a href="https://rafacaire1507.github.io/Assinatrack/codigo-fonte/PesquisaAssinaturas-Gabriel/index.html">Pesquisa assinaturas</a></li>
     <li><a href="https://rafacaire1507.github.io/Assinatrack/codigo-fonte/Home-Gabriel/home.html
 #contato">Contato</a></li>
   `;
