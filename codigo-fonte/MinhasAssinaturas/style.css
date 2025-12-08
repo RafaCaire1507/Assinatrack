@@ -306,25 +306,25 @@ body {
 /* ------------------------- */
 
 .exportar-area {
-    margin-top: 40px;
+  margin-top: 40px;
 }
 
 .exportar-relatorios-btn {
-    padding: 12px 20px;
-    background: #6f2dbd;
-    color: #fff;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 15px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  padding: 12px 20px;
+  background: #6f2dbd;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .exportar-relatorios-btn:hover {
-    background: #5b23a1;
+  background: #5b23a1;
 }
 
 /* ------------------------- */
@@ -332,67 +332,81 @@ body {
 /* ------------------------- */
 
 .modal-content p {
-    margin: 10px 0;
+  margin: 10px 0;
 }
 
 .button-group {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
 }
 
 .btn {
-    flex: 1;
-    padding: 10px;
-    border: none;
-    border-radius: 10px;
-    color: #fff;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
 .btn.excel {
-    background: #1f8f3d;
-    margin-right: 10px;
+  background: #1f8f3d;
+  margin-right: 10px;
 }
 
 .btn.pdf {
-    background: #c62828;
+  background: #c62828;
 }
 
 .close-btn {
-    margin-top: 20px;
-    width: 100%;
-    padding: 10px;
-    background: #ccc;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
+  margin-top: 20px;
+  width: 100%;
+  padding: 10px;
+  background: #ccc;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
 }
 
 .close-btn:hover {
-    background: #b9b9b9;
+  background: #b9b9b9;
 }
 
 /* Modal exportar relatórios */
 #modalExportar.modal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #modalExportar {
-    opacity: 0;
-    pointer-events: none;
+  opacity: 0;
+  pointer-events: none;
 }
 
 #modalExportar.show {
-    opacity: 1;
-    pointer-events: all;
+  opacity: 1;
+  pointer-events: all;
+}
+.search-api-btn {
+  padding: 8px 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fafafa;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  transition: background 0.18s;
+}
+
+.search-api-btn:hover {
+  background: #eee;
 }

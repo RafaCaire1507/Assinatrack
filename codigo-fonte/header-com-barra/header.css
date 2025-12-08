@@ -65,25 +65,6 @@ header * {
   object-fit: cover;
 }
 
-/* ✅ (NOVO) wrapper e placeholder caso queira usar em outra tela */
-.mini-avatar-wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.mini-avatar-placeholder {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #eee;
-  color: #777;
-  font-size: 20px;
-}
-
-/* Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -140,9 +121,4 @@ header * {
     opacity: 1;
     transform: scale(1);
   }
-}
-
-.gradient-bar {
-  background: linear-gradient(90deg, #5b0076, #b6332d);
-  height: 70px;
 }

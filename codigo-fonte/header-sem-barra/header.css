@@ -62,8 +62,10 @@ header * {
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  object-fit: cover; /* ✅ melhoria segura para não distorcer foto */
 }
 
+/* Modal */
 .modal-overlay {
   position: fixed;
   top: 0;
