@@ -111,6 +111,10 @@ header * {
 .modal-btn.primary {
   background: #6f2dbd;
 }
+.gradient-bar {
+  background: linear-gradient(90deg, #5b0076, #b6332d);
+  height: 70px;
+}
 
 @keyframes fadeIn {
   from {
